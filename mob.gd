@@ -23,3 +23,7 @@ func initialize(start_position, player_position):
 	velocity = Vector3.FORWARD * random_speed
 	# rotate velocity vector to align with Mob's look direction
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	queue_free()
