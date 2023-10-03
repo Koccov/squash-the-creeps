@@ -13,3 +13,6 @@ size = Vector3(1.60476, 1.42264, 1.89726)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_4i705")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1.20989, -1, -1.97236, 2.41977, 2, 3.94473)
