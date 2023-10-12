@@ -7,6 +7,8 @@
 radius = 0.8
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d042u"]
+height = 0.251777
+radius = 1.21235
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -24,5 +26,5 @@ shape = SubResource("SphereShape3D_ap67f")
 [node name="MobDetector" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MobDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.308592, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443926, 0)
 shape = SubResource("CylinderShape3D_d042u")
