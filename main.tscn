@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkuxe6vi2xatk"]
+[gd_scene load_steps=11 format=3 uid="uid://bkuxe6vi2xatk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_2m5up"]
 [ext_resource type="PackedScene" uid="uid://bokfnnwou11e3" path="res://player.tscn" id="1_rvemu"]
 [ext_resource type="PackedScene" uid="uid://c2v2mj13theec" path="res://mob.tscn" id="2_bgbq1"]
+[ext_resource type="FontFile" uid="uid://ctko02s7oyq0" path="res://fonts/Montserrat-Medium.ttf" id="4_s5g1u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i55v8"]
 size = Vector3(60, 2, 60)
@@ -22,6 +23,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Theme" id="Theme_f2ii2"]
+default_font = ExtResource("4_s5g1u")
+default_font_size = 22
 
 [node name="Main" type="Node"]
 script = ExtResource("1_2m5up")
@@ -86,6 +91,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = SubResource("Theme_f2ii2")
 
 [node name="ScoreLabel" type="Label" parent="UserInterface"]
 layout_mode = 0
