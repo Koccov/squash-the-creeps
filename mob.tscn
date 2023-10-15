@@ -1,10 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2v2mj13theec"]
+[gd_scene load_steps=7 format=3 uid="uid://c2v2mj13theec"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_5re20"]
 [ext_resource type="PackedScene" uid="uid://dddupswd1b7ui" path="res://art/mob.glb" id="1_pe6xg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4i705"]
 size = Vector3(2, 0.839388, 2.11061)
+
+[sub_resource type="Animation" id="Animation_awxbq"]
+resource_name = "float"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.8, 1.2),
+"transitions": PackedFloat32Array(0.757858, 1.56918, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.65, 0), Vector3(0, 0.35, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Character:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.225, 0.5, 1.2),
+"transitions": PackedFloat32Array(0.420448, 0.757858, 2.21915),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.139626, 0, 0), Vector3(-0.15708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tva1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcr7e"]
+_data = {
+"RESET": SubResource("Animation_tva1y"),
+"float": SubResource("Animation_awxbq")
+}
 
 [node name="Mob" type="CharacterBody3D" groups=["mob"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -15,6 +65,7 @@ script = ExtResource("1_5re20")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Character" parent="Pivot" instance=ExtResource("1_pe6xg")]
+transform = Transform3D(1, 0, 0, 0, 0.988494, 0.151259, 0, -0.151259, 0.988494, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172441, 0)
@@ -22,5 +73,11 @@ shape = SubResource("BoxShape3D_4i705")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1.20989, -1, -1.97236, 2.41977, 2, 3.94473)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "float"
+libraries = {
+"": SubResource("AnimationLibrary_jcr7e")
+}
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
